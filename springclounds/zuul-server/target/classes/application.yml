@@ -1,0 +1,22 @@
+euureka:
+  client:
+    serviceUrl:
+      defualtZone: http://localhost:8761/eureka/
+server:
+  port: 8769
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: zuul-server
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      servicerId: feign-server
+    api-b:
+      path: /api-b/**
+      serviceId: service-ribbon
+  ribbon:
+    eureka:
+      enabled: true
